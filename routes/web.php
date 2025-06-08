@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,9 @@ Route::middleware('auth')->group(function () {
 });
 //about
 Route::get('/about', [AboutController::class, 'about'])->name('about');
+
+//blogs
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
 
 
 require __DIR__.'/auth.php';

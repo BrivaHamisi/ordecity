@@ -4,11 +4,6 @@
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <div class="relative">
-                <div class="flex justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#0575E6] animate-fade-in-up" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l7-2 7 2v6c0 5-3 9-7 10-4-1-7-5-7-10V3z" />
-                    </svg>
-                </div>
                 <h2 class="text-5xl font-bold text-[#0575E6] mb-6 tracking-tight animate-fade-in-up">What are our clients saying about us!</h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto relative animate-fade-in-up">
                     Hear from our satisfied clients about their experiences with Ordecity.

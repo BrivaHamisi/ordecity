@@ -1,6 +1,6 @@
 <x-layout>
 
-    {{-- @include('components.home.hero') --}}
+    @include('components.blogs.featuredblog')
     {{-- @include('components.home.testimonials') --}}
     {{-- @include('components.home.faqs') --}}
 
