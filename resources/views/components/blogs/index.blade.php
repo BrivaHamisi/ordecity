@@ -14,14 +14,6 @@
                 <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] rounded-b-[40px]"></div>
                 <div class="relative pt-16 pb-16">
                     <div class="text-center mb-16">
-                        <div class="inline-flex items-center mb-6">
-                            <div class="flex items-center space-x-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-xl border border-gray-200">
-                                <div class="w-8 h-8 rounded-full bg-[#0575E6]/20 flex items-center justify-center">
-                                    <i class="fas fa-newspaper text-[#0575E6] text-xs"></i>
-                                </div>
-                                <span class="text-gray-800 font-medium">Stay Informed</span>
-                            </div>
-                        </div>
                         <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#0575E6] leading-tight mb-4 animate-zoomIn">
                             News & Updates
                         </h1>

@@ -83,7 +83,7 @@
                         <i class="fas fa-list"></i>
                         <span>Categories</span>
                     </a>
-                    <a href="#"
+                    <a href="/users"
                         class="flex items-center space-x-3 px-4 py-3 rounded-lg text-white hover:bg-[#00B7EB]/50">
                         <i class="fas fa-users"></i>
                         <span>Users</span>
