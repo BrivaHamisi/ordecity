@@ -5,12 +5,7 @@
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-20">
             <div class="relative">
-                <div class="flex justify-center mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#0575E6] animate-fade-in-up" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l7-2 7 2v6c0 5-3 9-7 10-4-1-7-5-7-10V3z" />
-                    </svg>
-                </div>
-                <h2 class="text-5xl md:text-6xl font-bold text-[#0575E6] mb-6 tracking-tight animate-fade-in-up">Meet Our Team</h2>
+                 <h2 class="text-4xl sm:text-5xl font-extrabold text-[#0575E6] mb-6 tracking-tight animate-zoomIn"> Meet Our Team</h2>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto relative animate-fade-in-up">
                     We focus on the details of everything we do. All to help businesses around the world focus on what's most important to them.
                     <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-28 h-0.5 bg-[#0575E6]/30"></span>
@@ -21,7 +16,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <!-- Team Member 1: Paul K. Ndungu -->
             <div class="p-6 bg-white/90 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up cursor-pointer" onclick="openModal('paul')">
-                <img src="{{ asset('Images/paul-ndungu.png') }}" alt="Paul K. Ndungu" class="w-full h-48 object-cover rounded-lg mb-4">
+                <img src="{{ asset('images/paul-ndungu.png') }}" alt="Paul K. Ndungu" class="w-full h-48 object-cover rounded-lg mb-4">
                 <h3 class="text-xl md:text-2xl font-semibold text-[#0575E6] mb-2">Paul K. Ndungu</h3>
                 <p class="text-gray-700 text-sm md:text-base mb-1">Founder and Managing Director, Project and Management expert</p>
                 <p class="text-gray-500 text-xs">Enjoys adventurous travel, seeks new cultures and offbeat destinations</p>
@@ -29,7 +24,7 @@
 
             <!-- Team Member 2: Mulika Mutuku -->
             <div class="p-6 bg-white/90 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up cursor-pointer" onclick="openModal('mulika')">
-                <img src="{{ asset('Images/mulika-mutuku.png') }}" alt="Mulika Mutuku" class="w-full h-48 object-cover rounded-lg mb-4">
+                <img src="{{ asset('images/mulika-mutuku.png') }}" alt="Mulika Mutuku" class="w-full h-48 object-cover rounded-lg mb-4">
                 <h3 class="text-xl md:text-2xl font-semibold text-[#0575E6] mb-2">Mulika Mutuku</h3>
                 <p class="text-gray-700 text-sm md:text-base mb-1">Associate Director</p>
                 <p class="text-gray-500 text-xs">Pop music lover, seeks joy and exciting pop concerts</p>
