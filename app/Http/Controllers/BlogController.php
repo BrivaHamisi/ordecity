@@ -9,9 +9,42 @@ use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
-    public function show(){
-        return view('blogs');
+    public function show()
+    {
+        $blogs = Blog::with('category')->orderBy('publication_date', 'desc')->get();
+        $categories = Category::all();
+        $latestBlog = $blogs->first();
+        return view('blogs', compact('blogs', 'categories', 'latestBlog'));
     }
+
+    public function showDetails($id)
+    {
+        $blog = Blog::with('category')->findOrFail($id);
+        return view('components.blogs.blog-details', compact('blog'));
+    }
+
+    public function filter(Request $request)
+    {
+        $category = $request->query('category', 'all'); // Default to 'all'
+        $search = $request->query('search', '');
+
+        $blogs = Blog::with('category')
+            ->when($category !== 'all', function ($query) use ($category) {
+                return $query->whereHas('category', function ($query) use ($category) {
+                    $query->where('name', $category);
+                });
+            })
+            ->when($search, function ($query) use ($search) {
+                return $query->where('title', 'like', "%{$search}%")
+                             ->orWhere('description', 'like', "%{$search}%");
+            })
+            ->orderBy('publication_date', 'desc')
+            ->get();
+
+        $html = view('components.blogs.blog-grid', compact('blogs'))->render();
+        return response()->json(['success' => true, 'html' => $html]);
+    }
+
     public function index()
     {
         $blogs = Blog::with('category')->paginate(10);

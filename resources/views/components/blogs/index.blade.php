@@ -22,12 +22,12 @@
                         </p>
                     </div>
 
-                    <!-- Featured Article -->
+                    <!-- Featured Article (Latest Blog) -->
                     <div class="bg-white rounded-3xl shadow-xl overflow-hidden mb-16 hover:shadow-2xl transition-shadow animate-fadeIn" style="animation-delay: 0.7s;">
                         <div class="md:flex">
                             <div class="md:w-1/2 relative">
                                 <div class="bg-[#0575E6]/10 h-full flex items-center justify-center p-10">
-                                    <img src="https://images.unsplash.com/photo-1516321310763-383fb7b3d7fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Ordecity Competency Framework Launch" class="rounded-2xl shadow-lg object-cover w-full h-full" />
+                                    <img src="{{ $latestBlog ? asset($latestBlog->image_path) : 'https://images.unsplash.com/photo-1516321310763-383fb7b3d7fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80' }}" alt="{{ $latestBlog->title ?? 'Ordecity Competency Framework Launch' }}" class="rounded-2xl shadow-lg object-cover w-full h-full" />
                                 </div>
                                 <div class="absolute top-6 left-6 bg-[#0575E6] text-white px-4 py-2 rounded-full text-sm font-semibold">
                                     Featured
@@ -36,16 +36,16 @@
                             <div class="md:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
                                 <div class="mb-4">
                                     <span class="inline-block bg-[#E6F0FA] text-[#0575E6] rounded-full px-3 py-1 text-sm font-medium">
-                                        Innovation
+                                        {{ $latestBlog->category->name ?? 'Innovation' }}
                                     </span>
-                                    <span class="text-gray-500 text-sm ml-4">February 20, 2025</span>
+                                    <span class="text-gray-500 text-sm ml-4">{{ $latestBlog->publication_date ?? 'February 20, 2025' }}</span>
                                 </div>
-                                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ordecity Launches New Competency Framework Nationwide</h2>
+                                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ $latestBlog->title ?? 'Ordecity Launches New Competency Framework Nationwide' }}</h2>
                                 <p class="text-lg text-gray-600 mb-6">
-                                    Ordecity is proud to announce the nationwide rollout of our innovative competency framework, empowering organizations with strategic employee development tools.
+                                    {{ $latestBlog->description ?? 'Ordecity is proud to announce the nationwide rollout of our innovative competency framework, empowering organizations with strategic employee development tools.' }}
                                 </p>
                                 <div class="mt-auto">
-                                    <a href="#" class="group inline-flex items-center text-[#0575E6] font-medium hover:text-[#045BB5] transition-colors">
+                                    <a href="{{ route('blogs.showdetails', $latestBlog->id ?? '#') }}" class="group inline-flex items-center text-[#0575E6] font-medium hover:text-[#045BB5] transition-colors">
                                         Read full article
                                         <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
                                     </a>
@@ -62,25 +62,14 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="bg-white/80 backdrop-blur rounded-2xl shadow-lg p-6 mb-12 animate-fadeIn" style="animation-delay: 0.9s;">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div class="flex flex-wrap gap-2">
-                    <button class="bg-[#0575E6] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#045BB5] transition-colors">
-                        All Updates
-                    </button>
-                    <button class="bg-white text-[#0575E6] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E6F0FA] border border-[#0575E6] transition-colors">
-                        Leadership
-                    </button>
-                    <button class="bg-white text-[#0575E6] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E6F0FA] border border-[#0575E6] transition-colors">
-                        Development
-                    </button>
-                    <button class="bg-white text-[#0575E6] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E6F0FA] border border-[#0575E6] transition-colors">
-                        Events
-                    </button>
-                    <button class="bg-white text-[#0575E6] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E6F0FA] border border-[#0575E6] transition-colors">
-                        Community
-                    </button>
+                <div class="flex flex-wrap gap-2" id="category-filters">
+                    <button data-category="all" class="tab-btn bg-[#0575E6] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#045BB5] transition-colors active">All Updates</button>
+                    @foreach ($categories as $category)
+                        <button data-category="{{ $category->name }}" class="tab-btn bg-white text-[#0575E6] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E6F0FA] border border-[#0575E6] transition-colors">{{ $category->name }}</button>
+                    @endforeach
                 </div>
                 <div class="relative flex-grow md:max-w-md">
-                    <input type="text" placeholder="Search articles..." class="w-full pl-10 pr-4 py-3 rounded-lg border border-[#0575E6] focus:ring-2 focus:ring-[#0575E6] focus:border-[#0575E6] transition-all">
+                    <input type="text" id="search-input" placeholder="Search articles..." class="w-full pl-10 pr-4 py-3 rounded-lg border border-[#0575E6] focus:ring-2 focus:ring-[#0575E6] focus:border-[#0575E6] transition-all">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="fas fa-search text-[#0575E6]"></i>
                     </div>
@@ -89,87 +78,36 @@
         </div>
 
         <!-- News Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            <!-- Article Card 1 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:translate-y-[-5px] group animate-fadeIn" style="animation-delay: 1s;">
-                <div class="relative">
-                    <div class="bg-[#0575E6]/10 p-6 flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Leadership Training Program" class="rounded-lg object-cover w-full h-[250px]" />
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="blog-grid">
+            @foreach ($blogs as $blog)
+                @if ($blog->id !== $latestBlog->id) <!-- Exclude featured blog -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:translate-y-[-5px] group animate-fadeIn" style="animation-delay: {{ 1 + ($loop->index * 0.1) }}s;" data-category="{{ $blog->category->name }}">
+                        <div class="relative">
+                            <div class="bg-[#0575E6]/10 p-6 flex items-center justify-center">
+                                <img src="{{ asset($blog->image_path) }}" alt="{{ $blog->title }}" class="rounded-lg object-cover w-full h-[250px]" />
+                            </div>
+                            <div class="absolute top-4 left-4 bg-[#E6F0FA] text-[#0575E6] px-3 py-1 rounded-full text-xs font-medium">
+                                {{ $blog->category->name }}
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-2">
+                                <span class="text-gray-500 text-sm">{{ $blog->publication_date }}</span>
+                                <span class="mx-2 text-gray-300">•</span>
+                                <span class="text-gray-500 text-sm">{{ $blog->reading_time }} min read</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#0575E6] transition-colors">{{ $blog->title }}</h3>
+                            <p class="text-gray-600 mb-4">
+                                {{ Str::limit($blog->description, 100) }}
+                            </p>
+                            <a href="{{ route('blogs.showdetails', $blog->id) }}" class="inline-flex items-center text-[#0575E6] font-medium hover:text-[#045BB5] transition-colors">
+                                Read more
+                                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="absolute top-4 left-4 bg-[#E6F0FA] text-[#0575E6] px-3 py-1 rounded-full text-xs font-medium">
-                        Leadership
-                    </div>
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center mb-2">
-                        <span class="text-gray-500 text-sm">February 15, 2025</span>
-                        <span class="mx-2 text-gray-300">•</span>
-                        <span class="text-gray-500 text-sm">5 min read</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#0575E6] transition-colors">Ordecity Introduces New Leadership Training Program</h3>
-                    <p class="text-gray-600 mb-4">
-                        Our latest program empowers leaders with advanced skills to foster organizational growth and innovation.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-[#0575E6] font-medium hover:text-[#045BB5] transition-colors">
-                        Read more
-                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Article Card 2 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:translate-y-[-5px] group animate-fadeIn" style="animation-delay: 1.1s;">
-                <div class="relative">
-                    <div class="bg-[#0575E6]/10 p-6 flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Ordecity Global Expansion" class="rounded-lg object-cover w-full h-[250px]" />
-                    </div>
-                    <div class="absolute top-4 left-4 bg-[#E6F0FA] text-[#0575E6] px-3 py-1 rounded-full text-xs font-medium">
-                        Expansion
-                    </div>
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center mb-2">
-                        <span class="text-gray-500 text-sm">February 10, 2025</span>
-                        <span class="mx-2 text-gray-300">•</span>
-                        <span class="text-gray-500 text-sm">3 min read</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#0575E6] transition-colors">Ordecity Expands Services to Global Markets</h3>
-                    <p class="text-gray-600 mb-4">
-                        We're thrilled to announce our expansion into Europe and Asia, bringing innovative development solutions to new organizations.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-[#0575E6] font-medium hover:text-[#045BB5] transition-colors">
-                        Read more
-                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Article Card 3 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:translate-y-[-5px] group animate-fadeIn" style="animation-delay: 1.2s;">
-                <div class="relative">
-                    <div class="bg-[#0575E6]/10 p-6 flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1516321310763-383fb7b3d7fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Partnership with Industry Leaders" class="rounded-lg object-cover w-full h-[250px]" />
-                    </div>
-                    <div class="absolute top-4 left-4 bg-[#E6F0FA] text-[#0575E6] px-3 py-1 rounded-full text-xs font-medium">
-                        Partnership
-                    </div>
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center mb-2">
-                        <span class="text-gray-500 text-sm">February 8, 2025</span>
-                        <span class="mx-2 text-gray-300">•</span>
-                        <span class="text-gray-500 text-sm">4 min read</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#0575E6] transition-colors">Ordecity Partners with Industry Leaders for Growth</h3>
-                    <p class="text-gray-600 mb-4">
-                        Our new partnership aims to enhance organizational development through collaborative innovation and resources.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-[#0575E6] font-medium hover:text-[#045BB5] transition-colors">
-                        Read more
-                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-            </div>
+                @endif
+            @endforeach
         </div>
 
         <!-- Pagination -->
@@ -308,15 +246,18 @@
         }
     </style>
 
-    <!-- JavaScript for Newsletter Subscription -->
+    <!-- JavaScript for Newsletter Subscription, Category Filtering, and Search -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const newsletterForm = document.getElementById('newsletterForm');
             const newsletterFeedback = document.getElementById('newsletterFeedback');
+            const categoryFilters = document.getElementById('category-filters');
+            const blogGrid = document.getElementById('blog-grid');
+            const searchInput = document.getElementById('search-input');
 
+            // Newsletter Subscription
             newsletterForm.addEventListener('submit', function(event) {
                 event.preventDefault();
-
                 newsletterFeedback.classList.remove('hidden', 'feedback-animate');
                 newsletterFeedback.innerHTML = `
                     <div class="flex items-center justify-center gap-2 text-white/80">
@@ -335,12 +276,7 @@
                     },
                     body: formData,
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok: ' + response.statusText);
-                    }
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(data => {
                     newsletterFeedback.classList.add('feedback-animate');
                     if (data.success) {
@@ -359,9 +295,7 @@
                             </div>
                         `;
                     }
-                    setTimeout(() => {
-                        newsletterFeedback.classList.add('hidden');
-                    }, 5000);
+                    setTimeout(() => newsletterFeedback.classList.add('hidden'), 5000);
                 })
                 .catch(error => {
                     newsletterFeedback.classList.add('feedback-animate');
@@ -371,11 +305,45 @@
                             <span>An error occurred: ${error.message}. Please try again.</span>
                         </div>
                     `;
-                    setTimeout(() => {
-                        newsletterFeedback.classList.add('hidden');
-                    }, 5000);
+                    setTimeout(() => newsletterFeedback.classList.add('hidden'), 5000);
+                });
+            });
+
+            // Category Filtering
+            categoryFilters.addEventListener('click', function(e) {
+                const button = e.target.closest('.tab-btn');
+                if (button) {
+                    categoryFilters.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const category = button.getAttribute('data-category');
+                    const articles = blogGrid.querySelectorAll('div[data-category]');
+                    articles.forEach(article => {
+                        if (category === 'all' || article.getAttribute('data-category') === category) {
+                            article.style.display = 'block';
+                        } else {
+                            article.style.display = 'none';
+                        }
+                    });
+                }
+            });
+
+            // Search Functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                const articles = blogGrid.querySelectorAll('div[data-category]');
+                articles.forEach(article => {
+                    const title = article.querySelector('h3').textContent.toLowerCase();
+                    if (searchTerm === '' || title.includes(searchTerm)) {
+                        article.style.display = 'block';
+                    } else {
+                        article.style.display = 'none';
+                    }
                 });
             });
         });
     </script>
+
+    <!-- Font Awesome Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </div>

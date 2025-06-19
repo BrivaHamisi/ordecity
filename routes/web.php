@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubscriptionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,7 +44,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/about', [AboutController::class, 'about'])->name('about');
 
     //Show Blogs
-    Route::get('/showblogs', [BlogController::class, 'show'])->name('blogs.show');
+    Route::get('/showblogs', [BlogController::class, 'show'])->name('blogs.index');
+    Route::get('/showblogs/{id}', [BlogController::class, 'showDetails'])->name('blogs.showdetails');
+    Route::get('/blogs/filter', [BlogController::class, 'filter'])->name('blogs.filter');
+    Route::post('/subscribe', [SubscriptionController::class, 'store'])->name('subscribe');
 
 
 require __DIR__.'/auth.php';

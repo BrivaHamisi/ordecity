@@ -107,7 +107,7 @@
                         <i class="fas fa-camera"></i>
                         <span>Media</span>
                     </a>
-                    <a href="/Profile"
+                    <a href="/profile"
                         class="{{ request()->is('settings*') ? 'bg-gradient-to-r from-[#00B7EB] to-[#1E90FF] text-white' : 'text-white hover:bg-[#00B7EB]/50' }} flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300">
                         <i class="fas fa-cogs"></i>
                         <span>Profile Settings</span>
