@@ -118,6 +118,7 @@
     </form>
 </div>
 
+<!-- JavaScript for CKEditor and Form Submission Feedback -->
 <!-- CKEditor CDN -->
 <script src="https://cdn.ckeditor.com/ckeditor5/43.1.0/classic/ckeditor.js"></script>
 
@@ -133,7 +134,7 @@
                     'outdent', 'indent', '|',
                     'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo'
                 ],
-                placeholder: 'Enter blog description'
+                placeholder: 'Enter article description'
             })
             .then(editor => {
                 console.log('CKEditor initialized');
@@ -143,7 +144,7 @@
             });
 
         // Form submission feedback
-        const newsForm = document.getElementById('create-blog-form');
+        const newsForm = document.getElementById('create-news-form');
         const newsFeedback = document.getElementById('news-feedback');
 
         newsForm.addEventListener('submit', function(event) {

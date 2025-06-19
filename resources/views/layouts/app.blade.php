@@ -13,7 +13,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- CKE Editor --}}
-    <script src="https://cdn.ckeditor.com/ckeditor5/43.1.0/classic/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/45.2.0/ckeditor5.umd.js"></script> --}}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -38,21 +38,33 @@
                 background-position: bottom;
                 animation: waveAnimation 10s infinite ease-in-out;
             }
+
             @keyframes waveAnimation {
-                0% { background-position: 0 bottom; }
-                50% { background-position: 100px bottom; }
-                100% { background-position: 0 bottom; }
+                0% {
+                    background-position: 0 bottom;
+                }
+
+                50% {
+                    background-position: 100px bottom;
+                }
+
+                100% {
+                    background-position: 0 bottom;
+                }
             }
+
             .card {
                 background: rgba(255, 255, 255, 0.95);
                 border-radius: 15px;
                 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
             }
+
             .card:hover {
                 transform: translateY(-5px);
                 box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
             }
+
             .rounded-left {
                 border-top-left-radius: 20px;
                 border-bottom-left-radius: 20px;
@@ -70,7 +82,8 @@
                 <!-- Logo and Brand -->
                 <div class="flex items-center justify-between p-4 border-b border-[#00B7EB]/30">
                     <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-full bg-[#00B7EB]/30 flex items-center justify-center animate-pulse">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#00B7EB]/30 flex items-center justify-center animate-pulse">
                             <i class="fas fa-flask text-white text-xl"></i>
                         </div>
                         <h1 class="text-xl font-bold text-white">orDecity</h1>
@@ -153,10 +166,12 @@
                         <!-- User profile -->
                         <div class="flex items-center space-x-3 w-full sm:w-auto justify-end">
                             <div class="flex flex-col items-end">
-                                <h3 class="font-medium text-gray-800 text-sm sm:text-base md:text-lg">Hello, {{ Auth::user()->name }}</h3>
+                                <h3 class="font-medium text-gray-800 text-sm sm:text-base md:text-lg">Hello,
+                                    {{ Auth::user()->name }}</h3>
                                 <p class="text-gray-500 text-xs sm:text-sm">Admin</p>
                             </div>
-                            <i class="fas fa-user-circle text-[#1E90FF] text-xl sm:text-2xl md:text-3xl animate-pulse"></i>
+                            <i
+                                class="fas fa-user-circle text-[#1E90FF] text-xl sm:text-2xl md:text-3xl animate-pulse"></i>
                         </div>
                     </div>
                 </header>
@@ -201,5 +216,6 @@
         </script>
     </div>
 </body>
+
 
 </html>
