@@ -52,7 +52,7 @@
                                 before:transition-all before:duration-300 hover:before:w-full">
                                 About
                             </a>
-                            <a href="/blogs"
+                            <a href="/showblogs"
                                 class="relative group text-gray-600 hover:text-[#0575E6] font-semibold text-lg
                                 before:absolute before:-bottom-1 before:left-0 before:w-0 before:h-0.5 before:bg-[#0575E6]
                                 before:transition-all before:duration-300 hover:before:w-full">
@@ -93,7 +93,7 @@
                                 class="block text-gray-600 hover:text-[#0575E6] font-semibold text-lg">
                                 About
                             </a>
-                            <a href="/blogs"
+                            <a href="/showblogs"
                                 class="block text-gray-600 hover:text-[#0575E6] font-semibold text-lg">
                                 Blogs
                             </a>

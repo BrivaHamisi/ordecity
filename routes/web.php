@@ -22,8 +22,6 @@ Route::middleware('auth')->group(function () {
 
     //Users Route
     Route::get('/users', [UsersController::class, 'index'])->name('dashboard.users');
-    //about
-    Route::get('/about', [AboutController::class, 'about'])->name('about');
 
     //Categories
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
@@ -38,8 +36,14 @@ Route::middleware('auth')->group(function () {
     })->name('user-guide');
 
 
-    Route::resource('blogs', BlogController::class);
 });
+    Route::resource('blogs', BlogController::class);
+
+    //about
+    Route::get('/about', [AboutController::class, 'about'])->name('about');
+
+    //Show Blogs
+    Route::get('/showblogs', [BlogController::class, 'show'])->name('blogs.show');
 
 
 require __DIR__.'/auth.php';

@@ -107,10 +107,10 @@
                         <i class="fas fa-camera"></i>
                         <span>Media</span>
                     </a>
-                    <a href="#"
+                    <a href="/Profile"
                         class="{{ request()->is('settings*') ? 'bg-gradient-to-r from-[#00B7EB] to-[#1E90FF] text-white' : 'text-white hover:bg-[#00B7EB]/50' }} flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300">
                         <i class="fas fa-cogs"></i>
-                        <span>Settings</span>
+                        <span>Profile Settings</span>
                     </a>
                     <a href="/user-guide"
                         class="{{ request()->is('guide*') ? 'bg-gradient-to-r from-[#00B7EB] to-[#1E90FF] text-white' : 'text-white hover:bg-[#00B7EB]/50' }} flex items-center space-x-3 px-4 py-3 rounded-lg font-medium mt-4 transition-all duration-300">
@@ -124,7 +124,7 @@
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit"
-                            class="w-full py-2 px-4 bg-gray-800 text-gray-300 rounded-lg hover:bg-[#FF8829]/20 transition-colors flex items-center justify-center hover:text-white">
+                            class="w-full py-2 px-4 bg-red-600 text-gray-300 rounded-lg hover:bg-[#FF8829]/20 transition-colors flex items-center justify-center hover:text-white">
                             <i class="fas fa-sign-out-alt mr-2"></i> Logout
                         </button>
                     </form>

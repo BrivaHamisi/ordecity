@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
+    public function show(){
+        return view('blogs');
+    }
     public function index()
     {
         $blogs = Blog::with('category')->paginate(10);
