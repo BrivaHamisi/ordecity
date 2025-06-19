@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- CKE Editor --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/43.1.0/classic/ckeditor.js"></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -21,23 +24,34 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-        
+
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @else
         <style>
-            /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
             /* Custom styles for wave background and rounded sidebar */
             .wave-bg {
-                background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23E0F7FA" fill-opacity="0.5" d="M0,128L48,138.7C96,149,192,171,288,186.7C384,203,480,213,576,202.7C672,192,768,160,864,149.3C960,139,1056,149,1152,170.7C1248,192,1344,224,1392,240L1440,256V320H0Z"%3E%3C/path%3E%3C/svg%3E');
+                background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23E0F7FA" fill-opacity="0.8" d="M0,128L48,138.7C96,149,192,171,288,186.7C384,203,480,213,576,202.7C672,192,768,160,864,149.3C960,139,1056,149,1152,170.7C1248,192,1344,224,1392,240L1440,256V320H0Z"%3E%3C/path%3E%3C/svg%3E');
                 background-size: cover;
                 background-repeat: no-repeat;
+                background-position: bottom;
+                animation: waveAnimation 10s infinite ease-in-out;
+            }
+            @keyframes waveAnimation {
+                0% { background-position: 0 bottom; }
+                50% { background-position: 100px bottom; }
+                100% { background-position: 0 bottom; }
             }
             .card {
-                background: rgba(255, 255, 255, 0.9);
+                background: rgba(255, 255, 255, 0.95);
                 border-radius: 15px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
             }
             .rounded-left {
                 border-top-left-radius: 20px;
@@ -47,16 +61,16 @@
     @endif
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-50">
+<body class="font-sans antialiased bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="min-h-screen">
         <div class="flex min-h-screen">
             <!-- Left Sidebar/Navbar (collapsible) -->
             <div id="sidebar"
-                class="fixed inset-y-0 left-0 z-30 w-64 bg-gradient-to-b from-[#1E90FF] to-[#00B7EB] text-white transition-transform duration-300 transform md:translate-x-0 -translate-x-full rounded-left">
+                class="fixed inset-y-0 left-0 z-30 w-64 bg-gradient-to-b from-[#1E90FF] to-[#00B7EB] text-white transition-transform duration-300 transform md:translate-x-0 -translate-x-full rounded-left shadow-2xl">
                 <!-- Logo and Brand -->
-                <div class="flex items-center justify-between p-4 border-b border-[#00B7EB]/20">
+                <div class="flex items-center justify-between p-4 border-b border-[#00B7EB]/30">
                     <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-full bg-[#00B7EB]/20 flex items-center justify-center">
+                        <div class="w-10 h-10 rounded-full bg-[#00B7EB]/30 flex items-center justify-center animate-pulse">
                             <i class="fas fa-flask text-white text-xl"></i>
                         </div>
                         <h1 class="text-xl font-bold text-white">orDecity</h1>
@@ -68,42 +82,53 @@
 
                 <!-- Navigation -->
                 <nav class="space-y-1 p-4">
-                    <a href="#"
-                        class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-[#00B7EB] text-white font-medium">
+                    <a href="/dashboard"
+                        class="{{ request()->is('dashboard') ? 'bg-gradient-to-r from-[#00B7EB] to-[#1E90FF] text-white' : 'text-white hover:bg-[#00B7EB]/50' }} flex items-center space-x-3 px-4 py-3 rounded-lg font-medium transition-all duration-300">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
-                    <a href="#"
-                        class="flex items-center space-x-3 px-4 py-3 rounded-lg text-white hover:bg-[#00B7EB]/50">
+                    <a href="/blogs"
+                        class="{{ request()->is('blogs*') ? 'bg-gradient-to-r from-[#00B7EB] to-[#1E90FF] text-white' : 'text-white hover:bg-[#00B7EB]/50' }} flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300">
                         <i class="fas fa-pen"></i>
                         <span>Posts</span>
                     </a>
-                    <a href="#"
-                        class="flex items-center space-x-3 px-4 py-3 rounded-lg text-white hover:bg-[#00B7EB]/50">
+                    <a href="/categories"
+                        class="{{ request()->is('categories*') ? 'bg-gradient-to-r from-[#00B7EB] to-[#1E90FF] text-white' : 'text-white hover:bg-[#00B7EB]/50' }} flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300">
                         <i class="fas fa-list"></i>
                         <span>Categories</span>
                     </a>
                     <a href="/users"
-                        class="flex items-center space-x-3 px-4 py-3 rounded-lg text-white hover:bg-[#00B7EB]/50">
+                        class="{{ request()->is('users*') ? 'bg-gradient-to-r from-[#00B7EB] to-[#1E90FF] text-white' : 'text-white hover:bg-[#00B7EB]/50' }} flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300">
                         <i class="fas fa-users"></i>
                         <span>Users</span>
                     </a>
                     <a href="#"
-                        class="flex items-center space-x-3 px-4 py-3 rounded-lg text-white hover:bg-[#00B7EB]/50">
+                        class="{{ request()->is('media*') ? 'bg-gradient-to-r from-[#00B7EB] to-[#1E90FF] text-white' : 'text-white hover:bg-[#00B7EB]/50' }} flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300">
                         <i class="fas fa-camera"></i>
                         <span>Media</span>
                     </a>
                     <a href="#"
-                        class="flex items-center space-x-3 px-4 py-3 rounded-lg text-white hover:bg-[#00B7EB]/50">
+                        class="{{ request()->is('settings*') ? 'bg-gradient-to-r from-[#00B7EB] to-[#1E90FF] text-white' : 'text-white hover:bg-[#00B7EB]/50' }} flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300">
                         <i class="fas fa-cogs"></i>
                         <span>Settings</span>
                     </a>
-                    <a href="#"
-                        class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-[#00B7EB] text-white font-medium mt-4">
+                    <a href="/user-guide"
+                        class="{{ request()->is('guide*') ? 'bg-gradient-to-r from-[#00B7EB] to-[#1E90FF] text-white' : 'text-white hover:bg-[#00B7EB]/50' }} flex items-center space-x-3 px-4 py-3 rounded-lg font-medium mt-4 transition-all duration-300">
                         <i class="fas fa-book"></i>
                         <span>User Guide</span>
                     </a>
                 </nav>
+
+                <!-- Logout button -->
+                <div class="p-4 mt-auto">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"
+                            class="w-full py-2 px-4 bg-gray-800 text-gray-300 rounded-lg hover:bg-[#FF8829]/20 transition-colors flex items-center justify-center hover:text-white">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        </button>
+                    </form>
+                </div>
             </div>
 
             <!-- Overlay for sidebar on mobile -->
@@ -112,26 +137,26 @@
             <!-- Main content area (adjusted to accommodate sidebar) -->
             <div class="w-full md:ml-64 transition-all duration-300 flex flex-col">
                 <!-- Header section -->
-                <header class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-10">
+                <header class="bg-white shadow-lg border-b border-gray-100 sticky top-0 z-10">
                     <div class="px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
                         <!-- Menu button -->
                         <button id="open-sidebar" type="button"
-                            class="md:hidden rounded-md p-2 text-gray-600 hover:bg-gray-100">
+                            class="md:hidden rounded-md p-2 text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#1E90FF]">
                             <i class="fas fa-bars"></i>
                         </button>
 
                         <div class="flex items-center space-x-3 md:ml-0 ml-4">
                             <h1 class="text-xl md:text-2xl font-bold text-gray-800">Dashboard</h1>
-                            <p class="text-gray-500 text-sm">Home / Dashboard</p>
+                            {{-- <p class="text-gray-500 text-sm">Home / Dashboard</p> --}}
                         </div>
 
                         <!-- User profile -->
-                        <div class="flex items-center space-x-3">
-                            <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full">
-                            <div>
-                                <h3 class="font-medium text-gray-800">Ryan Adhitama</h3>
-                                <p class="text-sm text-gray-500">Web Developer</p>
+                        <div class="flex items-center space-x-3 w-full sm:w-auto justify-end">
+                            <div class="flex flex-col items-end">
+                                <h3 class="font-medium text-gray-800 text-sm sm:text-base md:text-lg">Hello, {{ Auth::user()->name }}</h3>
+                                <p class="text-gray-500 text-xs sm:text-sm">Admin</p>
                             </div>
+                            <i class="fas fa-user-circle text-[#1E90FF] text-xl sm:text-2xl md:text-3xl animate-pulse"></i>
                         </div>
                     </div>
                 </header>
@@ -140,66 +165,6 @@
                 <main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
                     {{ $slot }}
                 </main>
-
-                <!-- Page Main Content -->
-                {{-- <main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        <!-- Posts Card -->
-                        <div class="card p-4 text-center">
-                            <p class="text-gray-600">Posts</p>
-                            <h2 class="text-3xl font-bold text-[#1E90FF]">10</h2>
-                            <i class="fas fa-pen text-[#1E90FF] text-2xl mt-2"></i>
-                        </div>
-                        <!-- Categories Card -->
-                        <div class="card p-4 text-center">
-                            <p class="text-gray-600">Categories</p>
-                            <h2 class="text-3xl font-bold text-[#1E90FF]">3</h2>
-                            <i class="fas fa-list text-[#1E90FF] text-2xl mt-2"></i>
-                        </div>
-                        <!-- Users Card -->
-                        <div class="card p-4 text-center">
-                            <p class="text-gray-600">Users</p>
-                            <h2 class="text-3xl font-bold text-[#1E90FF]">2</h2>
-                            <i class="fas fa-users text-[#1E90FF] text-2xl mt-2"></i>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                        <!-- Visitor Growth Card -->
-                        <div class="card p-6">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="text-gray-600">Visitor Growth</p>
-                                    <p class="text-sm text-gray-500">Overall Information</p>
-                                </div>
-                                <div class="flex space-x-2">
-                                    <button class="px-3 py-1 bg-[#1E90FF] text-white rounded-full text-sm">Monthly</button>
-                                    <button class="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm">Yearly</button>
-                                </div>
-                            </div>
-                            <div class="wave-bg mt-4 h-40 flex items-end">
-                                <div class="w-full h-32 bg-[#E0F7FA] opacity-75" style="clip-path: polygon(0 100%, 5% 80%, 10% 70%, 15% 60%, 20% 50%, 25% 40%, 30% 30%, 35% 20%, 40% 10%, 45% 5%, 50% 0, 55% 5%, 60% 10%, 65% 20%, 70% 30%, 75% 40%, 80% 50%, 85% 60%, 90% 70%, 95% 80%, 100% 100%)"></div>
-                            </div>
-                        </div>
-                        <!-- Latest Posts Card -->
-                        <div class="card p-6">
-                            <p class="text-gray-600">Latest Posts</p>
-                            <div class="space-y-4 mt-4">
-                                <div>
-                                    <p class="text-gray-800">The Power of Dream</p>
-                                    <p class="text-sm text-gray-500">28 June 2021</p>
-                                </div>
-                                <div>
-                                    <p class="text-gray-800">Emotional Healing</p>
-                                    <p class="text-sm text-gray-500">22 June 2021</p>
-                                </div>
-                                <div>
-                                    <p class="text-gray-800">Works vs School</p>
-                                    <p class="text-sm text-gray-500">21 June 2021</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main> --}}
             </div>
         </div>
 
