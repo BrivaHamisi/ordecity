@@ -39,7 +39,7 @@
                 <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[#0575E6]/10 transition-colors duration-200" onclick="toggleAnswer(this)">
                     <span class="text-gray-900 font-semibold text-lg">How can I get started with Ordecity?</span>
                     <svg class="faq-icon h-5 w-5 text-[#0575E6] transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width ="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
                 <div class="faq-answer hidden p-6 pt-0 text-gray-800 text-base bg-white">
