@@ -5,14 +5,6 @@
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
         <div class="text-center mb-16">
-            {{-- <div class="inline-flex items-center mb-6">
-                <div class="flex items-center space-x-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-xl border border-gray-200 animate-fadeIn" style="animation-delay: 0.2s;">
-                    <div class="w-8 h-8 rounded-full bg-[#0575E6]/20 flex items-center justify-center">
-                        <i class="fas fa-question-circle text-[#0575E6] text-xs"></i>
-                    </div>
-                    <span class="text-gray-800 font-medium">Your Questions</span>
-                </div>
-            </div> --}}
             <h2 class="text-4xl sm:text-5xl font-extrabold text-[#0575E6] mb-6 tracking-tight animate-zoomIn">Frequently Asked Questions</h2>
             <p class="text-lg text-[#0575E6] max-w-3xl mx-auto animate-fadeIn" style="animation-delay: 0.4s;">
                 Find answers to common questions about how Ordecity can empower your organization.

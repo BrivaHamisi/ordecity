@@ -65,17 +65,6 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(
-        //     $request->all(),
-        //     $request->file('image'),
-        //     storage_path('app/public/blogs'),
-        //     is_writable(storage_path('app/public/blogs')),
-        //     is_writable('C:\Users\Hp\Documents\Projects\Laravel\ordecity\storage\tmp'),
-        //     ini_get('upload_tmp_dir'),
-        //     php_ini_loaded_file()
-        // );
-
-        // dd(php_ini_loaded_file(), ini_get('upload_tmp_dir'));
 
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -97,12 +86,12 @@ class BlogController extends Controller
 
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-            $uploadPath = public_path('blogs_images'); // Subdirectory under public
+            $uploadPath = public_path('blogs_images');
             if (!file_exists($uploadPath)) {
                 mkdir($uploadPath, 0755, true);
             }
             $request->file('image')->move($uploadPath, $imageName);
-            $blog->image_path = 'blogs_images/' . $imageName; // Relative path from public
+            $blog->image_path = 'blogs_images/' . $imageName;
         }
 
         $blog->save();
