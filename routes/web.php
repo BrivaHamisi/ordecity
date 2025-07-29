@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/about', [AboutController::class, 'about'])->name('about');
 
     //Show Blogs
-    Route::get('/showblogs', [BlogController::class, 'show'])->name('blogs.index');
+    Route::get('/showblogs', [BlogController::class, 'show'])->name('blogs.home');
     Route::get('/showblogs/{id}', [BlogController::class, 'showDetails'])->name('blogs.showdetails');
     Route::get('/blogs/filter', [BlogController::class, 'filter'])->name('blogs.filter');
     Route::post('/subscribe', [SubscriptionController::class, 'store'])->name('subscribe');
