@@ -7,6 +7,7 @@
         <title>Ordecity</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -29,13 +30,17 @@
                     <div class="flex items-center justify-between py-4 lg:py-5">
                         <!-- Brand Logo with Enhanced Animation -->
                         <div class="flex items-center space-x-3 group">
-                            <svg xmlns="http://www.w3.org/2000/svg"
+                            {{-- <svg xmlns="http://www.w3.org/2000/svg"
                                 class="h-9 w-9 text-[#0575E6] group-hover:rotate-12 group-hover:scale-110 transition-all duration-300"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 3l7-2 7 2v6c0 5-3 9-7 10-4-1-7-5-7-10V3z" />
-                            </svg>
-                            <span class="text-2xl font-bold tracking-tight text-gray-800 group-hover:text-[#0575E6] transition-colors">Ordecity</span>
+                            </svg> --}}
+                            <img src="{{ asset('images/logo.png') }}" 
+     alt="Ordecity Logo"
+     class="h-9 w-25 group-hover:scale-110 transition-all duration-300 object-contain"
+     loading="lazy">
+                            {{-- <span class="text-2xl font-bold tracking-tight text-gray-800 group-hover:text-[#0575E6] transition-colors">Ordecity</span> --}}
                         </div>
 
                         <!-- Navigation Menu -->
@@ -57,6 +62,12 @@
                                 before:absolute before:-bottom-1 before:left-0 before:w-0 before:h-0.5 before:bg-[#0575E6]
                                 before:transition-all before:duration-300 hover:before:w-full">
                                 Blogs
+                            </a>
+                            <a href="/contact-us"
+                                class="relative group text-gray-600 hover:text-[#0575E6] font-semibold text-lg
+                                before:absolute before:-bottom-1 before:left-0 before:w-0 before:h-0.5 before:bg-[#0575E6]
+                                before:transition-all before:duration-300 hover:before:w-full">
+                                Contact Us
                             </a>
                             <a href="{{ route('login') }}"
                                 class="relative inline-flex items-center px-5 py-2.5 rounded-full border-2 border-[#0575E6] text-[#0575E6]

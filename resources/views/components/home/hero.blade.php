@@ -31,7 +31,7 @@
                 <!-- Decorative Image -->
                 <div class="relative max-w-4xl mx-auto mt-12 hidden md:block">
                     <div class="absolute inset-0 bg-[#0575E6] opacity-10 rounded-xl transform rotate-2 scale-105"></div>
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Team growth" class="relative rounded-xl shadow-2xl object-cover w-full h-[500px] animate-fadeIn" style="animation-delay: 0.6s;">
+                    <img src="images/ordecity-hero.png" alt="Team growth" class="relative rounded-xl shadow-2xl object-cover w-full h-[500px] animate-fadeIn" style="animation-delay: 0.6s;">
                 </div>
             </div>
         </div>

@@ -4,13 +4,18 @@
             <!-- Brand Section -->
             <div>
                 <div class="flex items-center space-x-3 group mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg"
+                    {{-- <svg xmlns="http://www.w3.org/2000/svg"
                         class="h-9 w-9 text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-300"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M5 3l7-2 7 2v6c0 5-3 9-7 10-4-1-7-5-7-10V3z" />
                     </svg>
-                    <span class="text-xl font-bold tracking-tight text-white group-hover:text-gray-200 transition-colors">Ordecity</span>
+                    <span class="text-xl font-bold tracking-tight text-white group-hover:text-gray-200 transition-colors">Ordecity</span> --}}
+
+                    <img src="{{ asset('images/logo-white.png') }}" 
+     alt="Ordecity Logo"
+     class="h-9 w-25 group-hover:scale-110 transition-all duration-300 object-contain"
+     loading="lazy">
                 </div>
                 <p class="text-gray-200 text-sm mb-6 leading-relaxed">
                     Empowering businesses with innovative solutions for growth and efficiency.
