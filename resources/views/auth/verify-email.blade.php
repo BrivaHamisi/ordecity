@@ -5,7 +5,7 @@
 
     <!-- Left Image Section -->
     <div class="hidden lg:flex w-1/2 relative overflow-hidden">
-        <img src="{{ asset('images/ordecity-verification-background.jpg') }}" alt="Ordecity Team" class="absolute inset-0 w-full h-full object-cover" />
+        <img src="{{ asset('images/ordecity-hero.png') }}" alt="Ordecity Team" class="absolute inset-0 w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-br from-[#0575E6]/80 to-transparent"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
         <div class="absolute inset-0" style="background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 30px 30px;"></div>

@@ -5,7 +5,7 @@
 
     <!-- Enhanced Image Section -->
     <div class="hidden lg:flex w-1/2 relative overflow-hidden">
-        <img src="{{ asset('images/ordecity-background.jpg') }}" alt="Ordecity Team" class="absolute inset-0 w-full h-full object-cover" />
+        <img src="{{ asset('images/ordecity-hero.png') }}" alt="Ordecity Team" class="absolute inset-0 w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-br from-[#0575E6]/80 to-transparent"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
         <div class="absolute inset-0" style="background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 30px 30px;"></div>
@@ -27,10 +27,10 @@
             </div>
 
             <div class="space-y-8">
-                <div class="flex space-x-4">
+                {{-- <div class="flex space-x-4">
                     <div class="h-px w-8 bg-white/40 my-auto"></div>
                     <p class="text-sm">COLLABORATIVE • EFFECTIVE • SUSTAINABLE</p>
-                </div>
+                </div> --}}
 
                 <div class="absolute bottom-12 left-12 z-20">
                     <div class="bg-white/90 backdrop-blur rounded-xl p-4 shadow-xl border border-gray-100">
@@ -109,11 +109,11 @@
                     <span class="relative flex items-center justify-center gap-2">{{ __('Log in') }} <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
                 </button>
 
-                @if (Route::has('register'))
+                {{-- @if (Route::has('register'))
                     <p class="mt-6 text-center text-sm text-gray-600">
                         Don't have an account? <a href="{{ route('register') }}" class="font-medium text-[#0575E6] hover:text-[#045dc1] transition-colors duration-150 ml-1">Create one now</a>
                     </p>
-                @endif
+                @endif --}}
             </form>
         </div>
     </div>
