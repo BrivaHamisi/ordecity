@@ -16,7 +16,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <!-- Team Member 1: Paul K. Ndungu -->
             <div class="p-6 bg-white/90 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up cursor-pointer" onclick="openModal('paul')">
-                <img src="{{ asset('images/paul-ndungu.png') }}" alt="Paul K. Ndungu" class="w-full h-48 object-cover rounded-lg mb-4">
+                <img src="{{ asset('images/paul.png') }}" alt="Paul K. Ndungu" class="w-full h-48 object-cover rounded-lg mb-4">
                 <h3 class="text-xl md:text-2xl font-semibold text-[#0575E6] mb-2">Paul K. Ndungu</h3>
                 <p class="text-gray-700 text-sm md:text-base mb-1">Founder and Managing Director, Project and Management expert</p>
                 <p class="text-gray-500 text-xs">Enjoys adventurous travel, seeks new cultures and offbeat destinations</p>
@@ -24,7 +24,7 @@
 
             <!-- Team Member 2: Mulika Mutuku -->
             <div class="p-6 bg-white/90 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up cursor-pointer" onclick="openModal('mulika')">
-                <img src="{{ asset('images/mulika-mutuku.png') }}" alt="Mulika Mutuku" class="w-full h-48 object-cover rounded-lg mb-4">
+                <img src="{{ asset('images/mulika-new.jpg') }}" alt="Mulika Mutuku" class="w-full h-48 object-cover rounded-lg mb-4">
                 <h3 class="text-xl md:text-2xl font-semibold text-[#0575E6] mb-2">Mulika Mutuku</h3>
                 <p class="text-gray-700 text-sm md:text-base mb-1">Associate Director</p>
                 <p class="text-gray-500 text-xs">Pop music lover, seeks joy and exciting pop concerts</p>
@@ -53,11 +53,11 @@
         if (person === 'paul') {
             modalTitle.textContent = 'Paul K. Ndungu';
             modalRole.textContent = 'Founder and Managing Director, Project and Management expert';
-            modalDescription.textContent = 'Paul brings over 15 years of experience in project management and organizational development. He is passionate about leading teams to deliver impactful solutions and enjoys exploring new cultures through adventurous travel.';
+            modalDescription.textContent = 'n integrated Organizational Development Champion, Learning and Development Strategist, and learning facilitator with 25 years of experience in the INGO Sector project management and people development. I help organizations develop innovative, systematic programs for staff capacity building and facilitating learning by helping them develop high-impact programs based on the competencies that their business needs most for effectiveness. Some of my main areas of expertise are the development of custom competency frameworks, designing organizational systems based on the frameworks, and facilitating learning by applying effective adult learning principles and practices. Some organizations I have done this for include Swisscontact, Gatsby Africa, TechnoServe, Mercy Corps, and FOCUS Kenya. Education: BSc, MBA-Entrepreneurship, and DBA underway. Professional Qualifications: Coaching Skills for Managers (CSM), Project Management Professional (PMP Pro.), Making Markets Work for the Poor (M4P), Accelerated Learning.';
         } else if (person === 'mulika') {
             modalTitle.textContent = 'Mulika Mutuku';
             modalRole.textContent = 'Associate Director';
-            modalDescription.textContent = 'Mulika oversees strategic partnerships and client relations with a keen interest in pop culture. With a background in business development, she loves attending exciting pop concerts and fostering team creativity.';
+            modalDescription.textContent = 'Brief Bio: I am an expert in behavioral aspects of productivity and systems thinking. I’ve spent over 10 years working with all kinds of clients—like Safaricom, PWC, and Tata Chemicals, to name a few—plus nonprofits and startups. Through that time, I’ve devised a way of working that combines understanding what makes people tick with figuring out how systems operate.I’m convinced that if you want to boost productivity and make changes that last, you’ve got to pay attention to both the people and the processes. That’s why I dig into things like habits, motivation, and how teams work together, while also looking at the bigger picture of how everything in an organization connects. When I team up with leaders and groups, we roll up our sleeves and get into what’s going well and what’s not. From there, we build solutions that make sense and can stick around for the long haul. Education: BA-Psychology Professional Courses: L4G | The Leadership Circle | Faith Driven Entrepreneurship.';
         }
 
         modal.classList.remove('hidden');

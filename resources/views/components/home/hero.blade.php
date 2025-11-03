@@ -20,10 +20,10 @@
                         Empowering leaders with custom competency frameworks to drive strategic employee and organizational growth.
                     </p>
                     <div class="flex justify-center space-x-4 animate-fadeIn" style="animation-delay: 0.4s;">
-                        <a href="#learn-more" class="inline-block bg-[#0575E6] text-white font-semibold px-8 py-4 rounded-full shadow-xl hover:bg-[#045BB5] transform hover:scale-105 transition-all duration-300">
+                        <a href="{{ route('about') }}" class="inline-block bg-[#0575E6] text-white font-semibold px-8 py-4 rounded-full shadow-xl hover:bg-[#045BB5] transform hover:scale-105 transition-all duration-300">
                             Learn More
                         </a>
-                        <a href="#contact" class="inline-block bg-transparent border-2 border-[#0575E6] text-[#0575E6] font-semibold px-8 py-4 rounded-full shadow-xl hover:bg-[#0575E6] hover:text-white transform hover:scale-105 transition-all duration-300">
+                        <a href="{{ route('contact-us') }}" class="inline-block bg-transparent border-2 border-[#0575E6] text-[#0575E6] font-semibold px-8 py-4 rounded-full shadow-xl hover:bg-[#0575E6] hover:text-white transform hover:scale-105 transition-all duration-300">
                             Get in Touch
                         </a>
                     </div>
