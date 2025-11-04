@@ -40,7 +40,7 @@
 
             <!-- Image -->
             <div class="md:w-1/3 flex justify-center">
-                <img src="{{ asset('Images/vision-mission.png') }}" alt="Vision and Mission Illustration" class="w-full h-auto max-h-96 object-contain animate-fadeIn" style="animation-delay: 1.4s;" id="png-placeholder">
+                <img src="{{ asset('images/vision-mission.png') }}" alt="Vision and Mission Illustration" class="w-full h-auto max-h-96 object-contain animate-fadeIn" style="animation-delay: 1.4s;" id="png-placeholder">
             </div>
 
             <!-- Image -->

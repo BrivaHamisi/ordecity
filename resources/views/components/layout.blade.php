@@ -1145,7 +1145,7 @@
         @include('components.home.footer')
 
         <!-- WhatsApp Floating Action Button -->
-    <a href="https://wa.me/245702111468?text=Hello" 
+    <a href="https://wa.me/245739247451?text=Hello" 
        class="fixed bottom-6 right-6 z-40 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-green-500"
        target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp text-xl"></i>
