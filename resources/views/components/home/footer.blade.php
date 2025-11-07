@@ -47,9 +47,9 @@
             <div>
                 <h4 class="text-lg font-semibold text-white mb-6">Company</h4>
                 <ul class="space-y-3">
-                    <li><a href="/careers" class="text-gray-200 hover:text-white text-sm transition-all duration-200 hover:underline">Careers</a></li>
-                    <li><a href="/press" class="text-gray-200 hover:text-white text-sm transition-all duration-200 hover:underline">Press</a></li>
-                    <li><a href="/contact" class="text-gray-200 hover:text-white text-sm transition-all duration-200 hover:underline">Contact</a></li>
+                    <li><a href="/about" class="text-gray-200 hover:text-white text-sm transition-all duration-200 hover:underline">Careers</a></li>
+                    <li><a href="/about" class="text-gray-200 hover:text-white text-sm transition-all duration-200 hover:underline">Press</a></li>
+                    <li><a href="/contact-us" class="text-gray-200 hover:text-white text-sm transition-all duration-200 hover:underline">Contact</a></li>
                 </ul>
             </div>
 

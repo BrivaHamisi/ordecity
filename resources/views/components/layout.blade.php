@@ -1100,6 +1100,9 @@
                         <a href="/showblogs" class="block text-gray-600 hover:text-[#0575E6] font-semibold text-lg">
                             Blogs
                         </a>
+                        <a href="/contact-us" class="block text-gray-600 hover:text-[#0575E6] font-semibold text-lg">
+                            Contact Us
+                        </a>
                         <a href="{{ route('login') }}"
                             class="block w-full text-center px-5 py-2.5 rounded-full border-2 border-[#0575E6] text-[#0575E6]
                                 font-semibold text-lg hover:bg-[#0575E6] hover:text-white transition-all duration-300">
